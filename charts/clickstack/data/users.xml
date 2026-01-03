@@ -22,6 +22,18 @@
             </networks>
             <quota>default</quota>
         </default>
+        <openpanel>
+            <password>{{ .Values.clickhouse.config.users.openpanelUserPassword }}</password>
+            <networks>
+                <ip>10.0.0.0/8</ip>
+                <host_regexp>.*\.svc\.cluster\.local$</host_regexp>
+            </networks>
+            <profile>default</profile>
+            <quota>default</quota>
+            <grants>
+                <query>GRANT SELECT,INSERT,CREATE,DROP,ALTER,SHOW ON openpanel.*</query>
+            </grants>
+        </openpanel>
         <app>
             <password>{{ .Values.clickhouse.config.users.appUserPassword }}</password>
             <networks>
